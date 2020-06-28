@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  test-render-multi.backend1:
+    build: ./backend1
+    environment:
+      BACKEND_2_HOST: test-render-multi.backend2
+    ports:
+      - "5000:5000"
+    links:
+      - test-render-multi.backend2
+
+  test-render-multi.backend2:
+    build: ./backend2
+    ports:
+      - "5001:5001"

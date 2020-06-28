@@ -1,0 +1,26 @@
+pullRequestPreviewsEnabled: true
+services:
+  - type: web
+    name: backend1
+    env: docker
+    dockerfilePath: ./backend1/Dockerfile
+    dockerContext: ./backend1
+    envVars:
+      - key: BACKEND_2_HOST
+        fromService:
+          name: backend2
+          type: pserv
+          property: host
+      - key: BACKEND_2_PORT
+        fromService:
+          name: backend2
+          type: pserv
+          property: port
+
+  # A Docker web service
+  - type: pserv
+    name: backend2
+    env: docker
+    dockerfilePath: ./backend2/Dockerfile
+    dockerContext: ./backend2
+    healthCheckPath: /
