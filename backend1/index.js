@@ -11,12 +11,12 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.send("hello from backend 1.");
+  res.send("hello from backend 1 PR.");
 });
 
 app.get("/passthrough", (req, res) => {
   callBackend2().then((result) => {
-    res.send(`got ${result} from backend 2`);
+    res.send(`got ${result} from backend 2 PR`);
   });
 
   //res.send("hello from backend 1.");
